@@ -2,7 +2,7 @@
 
 // console.dir(document);
 // console.log(document.domain);
-// console.log(document.title);
+// console.log(document.title);g
 // console.log(document.URL);
 
 // document.title= 123;
@@ -20,17 +20,37 @@
 
 //GETELEMENTBYID//
 
-// console.log(document.getElementById("header-title"p 
-var headerTitle = document.getElementById("header-title");
-var header = document.getElementById("main-header");
+// console.log(document.getElementById("header-title");
+// var headerTitle = document.getElementById("header-title");
+// var header = document.getElementById("main-header");
 // console.log(headerTitle);
 
 // headerTitle.textContent = 'Hello';
 // headerTitle.innerText = 'GoodBye';
-console.log(headerTitle.textContent);
-console.log(headerTitle.innerText);     //it pays attention to the styling it is biggest differnce between the innerTExt and textcontent
-
+// console.log(headerTitle.textContent);
+// console.log(headerTitle.innerText);     //it pays attention to the styling it is biggest differnce between the innerTExt and textcontent
 // headerTitle.innerHTML = "<h3>Hello</h3>"
 // headerTitle.style.borderBottom ="solid 3px #000"
-header.style.borderBottom ="solid 3px #000"
+// header.style.borderBottom ="solid 3px #000"
 
+
+
+//GETELEMENTBYCLASSNAME
+
+// console.log(document.getElementsByClassName("list-group-item"));
+var items = document.getElementsByClassName("list-group-item");
+// console.log(items);
+console.log(items[1]);
+items[1].textContent = "HELLO 2";
+items[2].style.backgroundColor = "green"
+
+//Gives error
+// items.style.backgroundColor = "yellow" //it's not working
+
+// for (let i = 0; i < items.length; i++) {
+//     items[i].style.backgroundColor = "yellow"
+// }
+
+for (let i = 0; i < items.length; i++) {
+        items[i].style.fontWeight = "bold";
+    }
