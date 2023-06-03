@@ -113,20 +113,106 @@
 
 //DELIVERABLE
 
-var secondItems = document.querySelector
-(".list-group-item:nth-child(2)");
-secondItems.style.background = "green";
+// var secondItems = document.querySelector
+// (".list-group-item:nth-child(2)");
+// secondItems.style.background = "green";
 
-var thirdItems = document.querySelector
-(".list-group-item:nth-child(3)");
-thirdItems.style.visibility = "hidden";
+// var thirdItems = document.querySelector
+// (".list-group-item:nth-child(3)");
+// thirdItems.style.visibility = "hidden";
 
 
-var items = document.querySelectorAll(".list-group-item");
-console.log(items);
-items[1].style.color = "green";
+// var items = document.querySelectorAll(".list-group-item");
+// console.log(items);
+// items[1].style.color = "green";
 
-var odd = document.querySelectorAll("li:nth-child(odd)");
-for (let i = 0; i <  odd.length; i++) {
-    odd[i].style.backgroundColor = "green"; 
-}
+// var odd = document.querySelectorAll("li:nth-child(odd)");
+// for (let i = 0; i <  odd.length; i++) {
+//     odd[i].style.backgroundColor = "green"; 
+// }
+
+//TRANSVERSING DOM
+// var listItems = document.querySelector("#items");
+//ParentNode
+// console.log(listItems.parentNode);
+// listItems.parentNode.style.backgroundColor = "#f4f4f4";
+// console.log(listItems.parentNode.parentNode);
+
+//ParentElement
+// console.log(listItems.parentElement);
+// listItems.parentElement.style.backgroundColor = "#f4f4f4";
+// console.log(listItems.parentElement.parentElement);
+
+//childNode
+// console.log(listItems.childNodes);
+
+// console.log(listItems.children);
+// console.log(listItems.children[1]);
+// listItems.children[1].style.backgroundColor = "yellow";
+
+//firstChild
+// console.log(listItems.firstChild);
+//firstElementChild
+// console.log(listItems.firstElementChild);
+// listItems.firstElementChild.textContent = "Hello 1"
+
+//lastChild
+// console.log(listItems.lastChild);
+//lastElementChild
+// console.log(listItems.lastElementChild);
+// listItems.lastElementChild.textContent = "Hello 4"
+
+//nextSibling
+// console.log(listItems.nextSibling);
+//nextElementSibling
+// console.log(listItems.nextElementSibling);
+
+//previousSibling
+// console.log(listItems.previousSibling);
+//previousElementSibling
+// console.log(listItems.previousElementSibling);
+// listItems.previousElementSibling.style.color = "green";
+
+//createElement
+var newDiv = document.createElement("div");
+
+//add class
+newDiv.className = "hello";
+
+//add id
+newDiv.id = "hello1";
+
+//add Attribute
+newDiv.setAttribute ("title" , "hellodiv");
+
+//create text node
+var newDivText = document.createTextNode("Hello World");
+
+//add text to div
+newDiv.appendChild(newDivText);
+
+var container = document.querySelector("header .container");
+var h1 = document.querySelector("header h1");
+
+// console.log(newDiv);
+
+newDiv.style.fontSize = "30px";
+
+container.insertBefore(newDiv,h1);
+
+//ADD HElllo world before Item 1
+var newSpan = document.createElement("span");
+newSpan.className = "world";
+newSpan.id = "world1";
+newSpan.setAttribute("title" , "worldspan");
+
+var newSpanText = document.createTextNode("Helllo World");
+
+newSpan.appendChild(newSpanText);
+
+var ul = document.querySelector(".list-group")
+var li = document.querySelector(".list-group-item")
+
+ul.insertBefore(newSpanText,li)
+
+console.log(newSpan);
