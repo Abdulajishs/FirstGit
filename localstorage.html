@@ -29,12 +29,17 @@
             event.preventDefault();
             const name = event.target.username.value;
             const email = event.target.emailId.value;
+            const obj ={
+                name,
+                email
+            }
+            localStorage.setItem(obj.email,JSON.stringify(obj))
             const listItem = document.createElement("li");
             listItem.textContent = name+"-"+ email;
             result.append(listItem);
 
-            localStorage.setItem("name", name);
-            localStorage.setItem("email", email);
+            // localStorage.setItem("name", name);
+            // localStorage.setItem("email", email);
 
 
         }
