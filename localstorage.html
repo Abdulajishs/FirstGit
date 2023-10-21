@@ -20,18 +20,23 @@
         <div>
             <button>Submit</button>
         </div>
+        <ul id="result"></ul>
     </form>
 
     <script>
+        const result = document.getElementById("result");
         function saveToLocalStorage(event) {
             event.preventDefault();
             const name = event.target.username.value;
             const email = event.target.emailId.value;
+            const listItem = document.createElement("li");
+            listItem.textContent = name+"-"+ email;
+            result.append(listItem);
 
-            localStorage.setItem("name",name);
-            localStorage.setItem("email",email);        
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
 
-            
+
         }
     </script>
 
