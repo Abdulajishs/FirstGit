@@ -23,6 +23,7 @@
 
     </form>
     <ul id="listOfitems"></ul>
+    
 
     <script>
 
@@ -36,7 +37,6 @@
             }
             localStorage.setItem(obj.email, JSON.stringify(obj));
             showUserOnScreen(obj)
-
         }
         function showUserOnScreen(obj) {
             const parentEle = document.getElementById("listOfitems");
