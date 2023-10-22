@@ -20,28 +20,39 @@
         <div>
             <button>Submit</button>
         </div>
-        <ul id="result"></ul>
+
     </form>
+    <ul id="listOfitems"></ul>
 
     <script>
-        const result = document.getElementById("result");
+
         function saveToLocalStorage(event) {
             event.preventDefault();
             const name = event.target.username.value;
             const email = event.target.emailId.value;
-            const obj ={
+            const obj = {
                 name,
                 email
             }
-            localStorage.setItem(obj.email,JSON.stringify(obj))
-            const listItem = document.createElement("li");
-            listItem.textContent = name+"-"+ email;
-            result.append(listItem);
+            localStorage.setItem(obj.email, JSON.stringify(obj));
+            showUserOnScreen(obj)
 
-            // localStorage.setItem("name", name);
-            // localStorage.setItem("email", email);
+        }
+        function showUserOnScreen(obj) {
+            const parentEle = document.getElementById("listOfitems");
+            const chlidEle = document.createElement("li");
+            parentEle.appendChild(chlidEle);
 
+            chlidEle.textContent = `${obj.name} - ${obj.email}`;
 
+            const deletion = document.createElement("input");
+            deletion.type = "button";
+            deletion.value = "Delete";
+            deletion.onclick = ()=>{
+                localStorage.removeItem(obj.email)
+                parentEle.removeChild(chlidEle)
+            }
+            chlidEle.appendChild(deletion);
         }
     </script>
 
