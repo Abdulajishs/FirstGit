@@ -45,8 +45,24 @@
                 document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
                 console.log(err);
             })
+            
             // showUserOnScreen(obj)
         }
+
+        window.addEventListener("DOMContentLoaded",()=>{
+            axios.get("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata")
+            .then(res=>{
+                console.log(res);
+                for (let i = 0; i < res.data.length; i++) {
+                    showUserOnScreen(res.data[i])
+                }
+            })
+            .catch(err=>{
+                document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
+                console.log(err);
+            })
+        })
+
         function showUserOnScreen(obj) {
             const parentEle = document.getElementById("listOfitems");
             const chlidEle = document.createElement("li");
