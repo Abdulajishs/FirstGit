@@ -23,7 +23,7 @@
 
     </form>
     <ul id="listOfitems"></ul>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
     <script>
 
@@ -36,31 +36,31 @@
                 email
             }
             // localStorage.setItem(obj.email, JSON.stringify(obj));
-            axios.post("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata",obj)
-            .then(res=>{
-                showUserOnScreen(res.data)
-                console.log(res);
-            })
-            .catch(err=>{
-                document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
-                console.log(err);
-            })
-            
+            axios.post("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata", obj)
+                .then(res => {
+                    showUserOnScreen(res.data)
+                    console.log(res);
+                })
+                .catch(err => {
+                    document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
+                    console.log(err);
+                })
+
             // showUserOnScreen(obj)
         }
 
-        window.addEventListener("DOMContentLoaded",()=>{
+        window.addEventListener("DOMContentLoaded", () => {
             axios.get("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata")
-            .then(res=>{
-                console.log(res);
-                for (let i = 0; i < res.data.length; i++) {
-                    showUserOnScreen(res.data[i])
-                }
-            })
-            .catch(err=>{
-                document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
-                console.log(err);
-            })
+                .then(res => {
+                    console.log(res);
+                    for (let i = 0; i < res.data.length; i++) {
+                        showUserOnScreen(res.data[i])
+                    }
+                })
+                .catch(err => {
+                    document.body.innerHTML = document.body.innerHTML + "<h4>Something went wrong</h4>"
+                    console.log(err);
+                })
         })
 
         function showUserOnScreen(obj) {
@@ -68,14 +68,22 @@
             const chlidEle = document.createElement("li");
             parentEle.appendChild(chlidEle);
 
-            chlidEle.textContent = `${obj.name} - ${obj.email}`;
+            chlidEle.textContent = `${obj._id} - ${obj.name} - ${obj.email}`;
 
             const deletion = document.createElement("input");
             deletion.type = "button";
             deletion.value = "Delete";
-            deletion.onclick = ()=>{
-                localStorage.removeItem(obj.email)
+            deletion.onclick = () => {
+                // localStorage.removeItem(obj.email)
                 parentEle.removeChild(chlidEle)
+                axios.delete(`https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata/${obj._id}`)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                
             }
             chlidEle.appendChild(deletion);
 
@@ -85,10 +93,10 @@
             edit.onclick = () => {
                 localStorage.removeItem(obj.email);
                 parentEle.removeChild(chlidEle);
-                const username = document.getElementById("username");
-                const emailId =  document.getElementById("emailId");
-                username.value = obj.name;
-                emailId.value = obj.email;
+                // const username = document.getElementById("username");
+                // const emailId =  document.getElementById("emailId");
+                // username.value = obj.name;
+                // emailId.value = obj.email;
             }
 
             chlidEle.appendChild(edit)
