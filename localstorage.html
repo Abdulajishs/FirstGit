@@ -36,7 +36,7 @@
                 email
             }
             // localStorage.setItem(obj.email, JSON.stringify(obj));
-            axios.post("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata", obj)
+            axios.post("https://crudcrud.com/api/62fe2f77e558486598932eb16d568a1e/appointmentdata", obj)
                 .then(res => {
                     showUserOnScreen(res.data)
                     console.log(res);
@@ -50,7 +50,7 @@
         }
 
         window.addEventListener("DOMContentLoaded", () => {
-            axios.get("https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata")
+            axios.get("https://crudcrud.com/api/62fe2f77e558486598932eb16d568a1e/appointmentdata")
                 .then(res => {
                     console.log(res);
                     for (let i = 0; i < res.data.length; i++) {
@@ -76,14 +76,13 @@
             deletion.onclick = () => {
                 // localStorage.removeItem(obj.email)
                 parentEle.removeChild(chlidEle)
-                axios.delete(`https://crudcrud.com/api/437ed9752a3048abbf4d07cb7e079e51/appointmentdata/${obj._id}`)
+                axios.delete(`https://crudcrud.com/api/62fe2f77e558486598932eb16d568a1e/appointmentdata/${obj._id}`)
                     .then(res => {
                         console.log(res);
                     })
                     .catch(err => {
                         console.log(err);
                     })
-                
             }
             chlidEle.appendChild(deletion);
 
@@ -91,12 +90,28 @@
             edit.type = "button";
             edit.value = "Edit";
             edit.onclick = () => {
-                localStorage.removeItem(obj.email);
+                // localStorage.removeItem(obj.email);
                 parentEle.removeChild(chlidEle);
-                // const username = document.getElementById("username");
-                // const emailId =  document.getElementById("emailId");
-                // username.value = obj.name;
-                // emailId.value = obj.email;
+                const username = document.getElementById("username");
+                const emailId = document.getElementById("emailId");
+                username.value = obj.name;
+                emailId.value= obj.email;
+                axios.delete(`https://crudcrud.com/api/62fe2f77e558486598932eb16d568a1e/appointmentdata/${obj._id}`)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                let updatedItem = {
+                    name: username.value,
+                    email: emailId.value
+                }
+                // axios.put(`https://crudcrud.com/api/62fe2f77e558486598932eb16d568a1e/appointmentdata/${obj._id}`,updatedItem)
+                //     .then(res => {
+                //         console.log(res);
+                //     })
+                //     .catch(err => console.log(err))
             }
 
             chlidEle.appendChild(edit)
